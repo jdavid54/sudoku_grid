@@ -1,0 +1,230 @@
+
+<!-- saved from url=(0038)http://jean.david.free.fr/sudoku4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+
+<script>
+var rows= new Array(9);
+//base grid
+/*
+rows[0]='609000000';
+rows[1]='008000702';
+rows[2]='200034000';
+rows[3]='003402179';
+rows[4]='410000258';
+rows[5]='920108300';
+rows[6]='704510023';
+rows[7]='302040615';
+rows[8]='000000407';
+
+rows[0]='020000068';
+rows[1]='300000900';
+rows[2]='000745000';
+rows[3]='069837040';
+rows[4]='000502000';
+rows[5]='075010080';
+rows[6]='000984000';
+rows[7]='800000700';
+rows[8]='000000032';
+
+rows[0]='400050030';
+rows[1]='006100000';
+rows[2]='000702005';
+rows[3]='020000800';
+rows[4]='050017000';
+rows[5]='080000300';
+rows[6]='000405001';
+rows[7]='007200000';
+rows[8]='900030040';
+
+rows[0]='000746000';
+rows[1]='480030051';
+rows[2]='000000000';
+rows[3]='000108000';
+rows[4]='002000100';
+rows[5]='069000530';
+rows[6]='048000790';
+rows[7]='700000006';
+rows[8]='000905000';
+
+rows[0]='400009006';
+rows[1]='000070009';
+rows[2]='000300800';
+rows[3]='006000050';
+rows[4]='957248001';
+rows[5]='001000040';
+rows[6]='000800700';
+rows[7]='000030004';
+rows[8]='800005003';
+
+rows[0]='419000802';
+rows[1]='700800030';
+rows[2]='600100750';
+rows[3]='080000500';
+rows[4]='900073000';
+rows[5]='000000000';
+rows[6]='004002300';
+rows[7]='090000200';
+rows[8]='100390078';
+*/
+// default grid
+rows[0]='005020600';
+rows[1]='090004010';
+rows[2]='200500003';
+rows[3]='006030000';
+rows[4]='000801000';
+rows[5]='000090400';
+rows[6]='300002007';
+rows[7]='010900050';
+rows[8]='004060800';
+
+
+//pattern used
+pattern='123456789';
+</script>
+
+<style>@media print {#ghostery-tracker-tally {display:none !important}}
+body {
+	background: #77a4cb;
+}
+
+table {
+    background: rgb(190, 190, 190);
+}
+
+td {font-family:arial; 
+border: 1px solid black; 
+font-size:12px; 
+text-align:left; 
+vertical-align:top; 
+width:50px; 
+height:50px;} 
+
+.found {font-weight:bold;
+font-size:20px;
+text-align:center; 
+vertical-align:middle;} 
+
+div{display:inline; float:left;}
+
+p {font-family:arial; font-size:12px;} 
+
+.grey {background-color:#f1eeee;}
+
+h3 {
+	font-family:arial; 
+ }</style></head>
+
+<body>
+
+<div id="candidategrid" onclick="get_element()"><style>td {font-family:arial; border: 1px solid black; font-size:12px; text-align:left; vertical-align:top; width:50px; height:50px;} .found {font-weight:bold;font-size:20px;text-align:center; vertical-align:middle;} div{display:inline; float:left;} p {font-family:arial; font-size:12px;} .grey {background-color:#f1eeee;}</style><table width="100%"><tbody><tr><td name="00" class="grey ">1478</td><td name="01" class="grey ">3478</td><td name="02" class="grey  found">5</td><td name="03" class="">137</td><td name="04" class=" found">2</td><td name="05" class="">3789</td><td name="06" class="grey  found">6</td><td name="07" class="grey ">4789</td><td name="08" class="grey ">489</td></tr><tr><td name="10" class="grey ">678</td><td name="11" class="grey  found">9</td><td name="12" class="grey ">378</td><td name="13" class="">367</td><td name="14" class="">78</td><td name="15" class=" found">4</td><td name="16" class="grey ">257</td><td name="17" class="grey  found">1</td><td name="18" class="grey ">258</td></tr><tr><td name="20" class="grey  found">2</td><td name="21" class="grey ">4678</td><td name="22" class="grey ">178</td><td name="23" class=" found">5</td><td name="24" class="">178</td><td name="25" class="">6789</td><td name="26" class="grey ">79</td><td name="27" class="grey ">4789</td><td name="28" class="grey  found">3</td></tr><tr><td name="30" class="">145789</td><td name="31" class="">24578</td><td name="32" class=" found">6</td><td name="33" class="grey ">247</td><td name="34" class="grey  found">3</td><td name="35" class="grey ">57</td><td name="36" class="">12579</td><td name="37" class="">2789</td><td name="38" class="">12589</td></tr><tr><td name="40" class="">4579</td><td name="41" class="">23457</td><td name="42" class="">2379</td><td name="43" class="grey  found">8</td><td name="44" class="grey ">457</td><td name="45" class="grey  found">1</td><td name="46" class="">23579</td><td name="47" class="">23679</td><td name="48" class="">2569</td></tr><tr><td name="50" class="">1578</td><td name="51" class="">23578</td><td name="52" class="">12378</td><td name="53" class="grey ">267</td><td name="54" class="grey  found">9</td><td name="55" class="grey ">567</td><td name="56" class=" found">4</td><td name="57" class="">23678</td><td name="58" class="">12568</td></tr><tr><td name="60" class="grey  found">3</td><td name="61" class="grey ">568</td><td name="62" class="grey ">89</td><td name="63" class="">14</td><td name="64" class="">1458</td><td name="65" class=" found">2</td><td name="66" class="grey ">19</td><td name="67" class="grey ">469</td><td name="68" class="grey  found">7</td></tr><tr><td name="70" class="grey ">678</td><td name="71" class="grey  found">1</td><td name="72" class="grey ">278</td><td name="73" class=" found">9</td><td name="74" class="">478</td><td name="75" class="">378</td><td name="76" class="grey ">23</td><td name="77" class="grey  found">5</td><td name="78" class="grey ">246</td></tr><tr><td name="80" class="grey ">579</td><td name="81" class="grey ">257</td><td name="82" class="grey  found">4</td><td name="83" class="">137</td><td name="84" class=" found">6</td><td name="85" class="">357</td><td name="86" class="grey  found">8</td><td name="87" class="grey ">239</td><td name="88" class="grey ">129</td></tr></tbody></table></div>
+
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<div>
+<div id="formdiv" float="right"><p id="title"><b>Sudoku grid input</b></p><p>Enter 0 for unknown numbers<br>Replace them with your solutions!</p><form id="basegrid"><input type="text" id="row1" value="row1"><br><input type="text" id="row2" value="row2"><br><input type="text" id="row3" value="row3"><br><input type="text" id="row4" value="row4"><br><input type="text" id="row5" value="row5"><br><input type="text" id="row6" value="row6"><br><input type="text" id="row7" value="row7"><br><input type="text" id="row8" value="row8"><br><input type="text" id="row9" value="row9"><br></form><p>Then push update button !</p><button onclick="updateValues()">Update it</button>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="save_grid()">Save grid</button><p>Just keep updating if any changes occur !</p>
+</div>
+<br/>
+<div>
+<input type="button" id="loadFileXml" value="..or choose a file" onclick="document.getElementById(&#39;file&#39;).click();">
+<input type="file" style="display:none;" id="file" name="file">
+<textarea rows="10" cols="27" hidden=""></textarea>
+<p>Click on a cell to modify the contents</p>
+<textarea id="zone3" style="width:80px;height:20px"></textarea>
+<button onclick="update()">Modify/Cancel</button>
+</div>
+
+<script type="text/javascript" src="sudoku3.js"></script>
+<script>
+var input = document.querySelector('input[type=file]');
+var textarea = document.querySelector('textarea');
+
+// here is the beginning
+showForm();  //showform will call updateAll which calls populate, scan, makegrid and sync !!!
+updateAll();
+
+
+function readFile(event) {
+  text = event.target.result;
+  textarea.textContent = event.target.result;
+  console.log(event.target.result);
+  rows = text.split(',');	
+  console.log(rows);
+  m_edit=grid9x9();
+  showForm();
+  updateAll();	
+}
+
+function changeFile() {
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.addEventListener('load', readFile);
+  reader.readAsText(file);
+}
+
+input.addEventListener('change', changeFile);
+
+var edit = false;
+var before, after;
+
+function get_element() {
+ if (!edit) {
+	var x = event.clientX, y = event.clientY,
+    elementMouseIsOver = document.elementFromPoint(x, y);
+	elementMouseIsOver.setAttribute('id','selected');
+	elementMouseIsOver.style.backgroundColor = "#ffeb3b";
+	document.getElementById('zone3').style.backgroundColor = "#ffeb3b";
+	edit = true;
+	before=elementMouseIsOver.innerHTML;
+	console.log(elementMouseIsOver.innerHTML);	
+	//var zone = document.getElementById('zone1');
+	//zone.innerHTML=elementMouseIsOver.innerHTML;
+	document.getElementById('zone3').value=elementMouseIsOver.innerHTML;
+  }
+}
+
+function update() {
+	var zone = document.getElementById('selected');
+	console.log(document.getElementById('zone3').value);
+	after=document.getElementById('zone3').value;
+	zone.innerHTML = document.getElementById('zone3').value;
+	document.getElementById('zone3').value="";
+	zone.setAttribute('id','');
+	var id=zone.getAttribute('name');
+	console.log(id);
+	var m=id%10;
+	var n=Math.floor(id/10);
+	c =strcmp2(before,after);
+	console.log(strcmp(before,after));	
+	if (m_edit[n][m]==undefined) m_edit[n][m]=c;	
+	else m_edit[n][m]+=c;
+	console.log(m_edit);
+	if (after.length==1) updateValues();
+	zone.style.backgroundColor = "";
+	document.getElementById('zone3').style.backgroundColor = "";
+	edit=false;
+
+}
+// only one digit at a time
+function strcmp(a, b) {
+    a = a.toString(), b = b.toString();
+    for (var i=0,n=Math.max(a.length, b.length); i<n && a.charAt(i) === b.charAt(i); ++i);
+    if (i === n) return 0;
+    return a.charAt(i);
+}
+
+// any number of digits
+function strcmp2(a, b) {
+	c ='';
+    a = a.toString(), b = b.toString();
+    for (var i=0;i<a.length;i++) {
+	if (!b.includes(a.charAt(i)))  {
+		c+=a.charAt(i)
+		console.log(c);
+	}
+	}
+    return c;
+}
+
+</script>
+
+</div></body></html>
