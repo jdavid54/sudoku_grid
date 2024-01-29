@@ -1,3 +1,7 @@
 # Solving sudoku
 
 ![Screenshot 2024-01-29 121732](https://github.com/jdavid54/sudoku_grid/assets/14958562/74582d29-67e0-42a0-9545-0352e5fd7301)
+
+## Grids can be saved or loaded as text files :
+
+050300040,000142007,060000002,000600000,605080000,320004000,070000908,900050006,030200405
